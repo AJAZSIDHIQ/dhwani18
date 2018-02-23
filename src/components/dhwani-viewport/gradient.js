@@ -16,7 +16,6 @@ var colorIndices = [0, 1, 2, 3]
 var gradientSpeed = 0.002
 
 function updateGradient () {
-  console.log('gets here 2')
   // eslint-disable-next-line
   if ($ === undefined) return
 
@@ -56,5 +55,4 @@ function updateGradient () {
   }
 }
 
-console.log('gets here 1')
 setInterval(updateGradient, 10)

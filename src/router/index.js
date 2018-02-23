@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import BohemianDhwani from '@/components/static/BohemianDhwani'
+import BohemianDhwani from '@/components/dhwani-viewport/dhwani-viewport-components/static/BohemianDhwani'
 
 Vue.use(Router)
 

@@ -1,25 +1,38 @@
 <template>
   <div id="dhwani-view-port-outer">
-    <div id="dhwani-view-port-inner">
-      <div id="gradient">
-        <grouter-view/>
+    <div id="gradient">
+      <div id="dhwani-view-port-inner" class="scrollbar-inner">
+        <router-view/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import jquery from 'jquery'
+
 import {} from './gradient'
 
+import {} from 'jquery.scrollbar'
+
 export default {
-  name: 'DhwaniViewPort'
+  name: 'DhwaniViewPort',
+  mounted: function () {
+    // eslint-disable-next-line
+    jquery('.scrollbar-inner').scrollbar()
+  },
+  updated: function () {
+    // eslint-disable-next-line
+    jquery('.scrollbar-inner').scrollbar()
+  }
 }
 </script>
 
+<style src="./jquery.scrollbar.css"></style>
 <style scoped>
 #dhwani-view-port-outer
 {
-  display: block;
+  display: flex;
   box-sizing: border-box;
   height: 100vh;
   width: 100vw;
@@ -29,7 +42,7 @@ export default {
 
 #dhwani-view-port-inner
 {
-  display: block;
+  display: flex;
   box-sizing: border-box;
   margin: auto;
   top: 0;
@@ -38,14 +51,13 @@ export default {
   bottom: 0;
   height: 100%;
   width: 100%;
-  /*border: 0.5px #f2f2f2;
-  border-style: solid;
-  border-radius: 20px;*/
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 #gradient
 {
-  display: block;
+  display: flex;
   box-sizing: border-box;
   margin: auto;
   top: 0;
@@ -54,8 +66,13 @@ export default {
   bottom: 0;
   height: 100%;
   width: 100%;
-  border: 1px transparent;
-  border-style: solid;
   border-radius: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /*position: absolute;*/
+}
+
+div.scroll-wrapper.scrollbar-inner {
+  width: 100%;
 }
 </style>
