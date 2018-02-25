@@ -2,7 +2,8 @@
   <div id="dhwani-view-port-outer">
     <div id="gradient">
       <div id="dhwani-view-port-inner" class="scrollbar-inner">
-        <router-view/>
+        <slot></slot>
+        <slot name="Workspace2"></slot>
       </div>
     </div>
   </div>
@@ -17,6 +18,12 @@ import {} from 'jquery.scrollbar'
 
 export default {
   name: 'DhwaniViewPort',
+  data: function () {
+    return {
+      totalWorkspaces: 2,
+      currentWorkspace: null
+    }
+  },
   mounted: function () {
     // eslint-disable-next-line
     jquery('.scrollbar-inner').scrollbar()
