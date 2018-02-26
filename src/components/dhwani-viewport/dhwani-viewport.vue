@@ -1,7 +1,7 @@
 <template>
   <div id="dhwani-view-port-outer">
     <div id="gradient">
-      <div id="dhwani-view-port-inner" class="scrollbar-inner">
+      <div id="dhwani-view-port-inner">
         <slot></slot>
         <slot name="Workspace2"></slot>
       </div>
@@ -10,28 +10,10 @@
 </template>
 
 <script>
-import jquery from 'jquery'
-
 import {} from './gradient'
 
-import {} from 'jquery.scrollbar'
-
 export default {
-  name: 'DhwaniViewPort',
-  data: function () {
-    return {
-      totalWorkspaces: 2,
-      currentWorkspace: null
-    }
-  },
-  mounted: function () {
-    // eslint-disable-next-line
-    jquery('.scrollbar-inner').scrollbar()
-  },
-  updated: function () {
-    // eslint-disable-next-line
-    jquery('.scrollbar-inner').scrollbar()
-  }
+  name: 'DhwaniViewPort'
 }
 </script>
 
@@ -58,8 +40,6 @@ export default {
   bottom: 0;
   height: 100%;
   width: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
 }
 
 #gradient
@@ -76,6 +56,7 @@ export default {
   border-radius: 20px;
   padding-top: 20px;
   padding-bottom: 20px;
+  overflow: hidden;
   /*position: absolute;*/
 }
 
