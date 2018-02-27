@@ -6,6 +6,12 @@
 </template>
 
 <script>
+import vm from '../../../../main.js'
+
+import jquery from 'jquery'
+
+import {} from 'jquery.scrollbar'
+
 export default {
   name: 'Workspace2',
   data: function () {
@@ -19,16 +25,29 @@ export default {
       jquery('.scrollbar-workspace-2').scrollbar()
     } else {
       // eslint-disable-next-line
-      jquery('.scrollbar-workspace-1').scrollbar('destroy')
+      jquery('.scrollbar-workspace-2').scrollbar('destroy')
     }
   },
-  updated: function () {
+  created: function () {
+    // changePath event handler
+    this.$bus.$on('activeWorkspace2', function () {
+      // console.log('activeWorkspace2')
+      vm.$children[0].$children[1].isActive = true
+    })
+    this.$bus.$on('disableWorkspace2', function () {
+      // console.log('disableWorkspace2')
+      vm.$children[0].$children[1].isActive = false
+    })
+  },
+  beforeUpdate: function () {
     if (this.isActive) {
+      // console.log('Workspace2 scroll enabled')
       // eslint-disable-next-line
       jquery('.scrollbar-workspace-2').scrollbar()
     } else {
+      // console.log('Workspace2 scroll destroy')
       // eslint-disable-next-line
-      jquery('.scrollbar-workspace-1').scrollbar('destroy')
+      jquery('.scrollbar-workspace-2').scrollbar('destroy')
     }
   }
 }
@@ -40,7 +59,7 @@ export default {
   display: flex;
   width: inherit;
   height: inherit;
-  margin-right: -100vw;
+  margin-right: -94vw;
   background: blueviolet;
   overflow-x: hidden;
   overflow-y: auto;

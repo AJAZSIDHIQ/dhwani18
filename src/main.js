@@ -47,18 +47,30 @@ const vm = new Vue({
       } else {
         var returnCreateElement = null
         if (this._currentWorkspace === 1) {
+          // console.log('gets here 1')
           this._currentWorkspace = 2
-          console.log('shifted workspace to 2')
+          // console.log('shifted workspace to 2')
           returnCreateElement = createElement('div', {}, [createElement(DhwaniViewPort, {}, [createElement(Workspace1, {}, [this.$slots.default, createElement(this._currentComponent, {}, [this.$slots.default]), createElement(Workspace1Menu, {}, [this.$slots.Workspace1Menu])]), createElement(Workspace2, {}, [this.$slots.Workspace2, createElement(ElementComponent, {}, []), createElement(Workspace2Menu, {}, [this.$slots.Workspace2Menu])])])])
           this._currentComponent = ElementComponent
           return returnCreateElement
         } else if (this._currentWorkspace === 2) {
+          // console.log('gets here 2')
           this._currentWorkspace = 1
-          console.log('shifted workspace to 1')
+          // console.log('shifted workspace to 1')
           returnCreateElement = createElement('div', {}, [createElement(DhwaniViewPort, {}, [createElement(Workspace1, {}, [this.$slots.default, createElement(ElementComponent, {}, []), createElement(Workspace1Menu, {}, [this.$slots.Workspace1Menu])]), createElement(Workspace2, {}, [this.$slots.Workspace2, createElement(this._currentComponent, {}, [this.$slots.default]), createElement(Workspace2Menu, {}, [this.$slots.Workspace2Menu])])])])
           this._currentComponent = ElementComponent
           return returnCreateElement
         }
+      }
+    },
+    switchWorkspace: function () {
+      // alert('happy birthday world' + this._currentWorkspace)
+      if (this._currentWorkspace === 1) {
+        this.$bus.$emit('disableWorkspace2')
+        this.$bus.$emit('activeWorkspace1')
+      } else if (this._currentWorkspace === 2) {
+        this.$bus.$emit('disableWorkspace1')
+        this.$bus.$emit('activeWorkspace2')
       }
     },
     ViewComponent: function () {
@@ -74,12 +86,19 @@ const vm = new Vue({
     // non reactive data
     this.__currentWorkspace = null
     this.__currentComponent = null
+
+    // changePath event handler
     this.$bus.$on('changePath', function (newPath) {
       vm.InitChange(newPath)
     })
+  },
+  updated: function () {
+    this.switchWorkspace()
   },
   render: function (createElement) {
     // console.log('hello')
     return this.switchWorkspaceInit(createElement, this.ViewComponent())
   }
 })
+
+export default vm

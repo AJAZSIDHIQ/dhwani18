@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import vm from '../../../../main.js'
+
 import jquery from 'jquery'
 
 import {} from 'jquery.scrollbar'
@@ -26,11 +28,24 @@ export default {
       jquery('.scrollbar-workspace-1').scrollbar('destroy')
     }
   },
-  updated: function () {
+  created: function () {
+    // changePath event handler
+    this.$bus.$on('activeWorkspace1', function () {
+      // console.log('activeWorkspace1')
+      vm.$children[0].$children[0].isActive = true
+    })
+    this.$bus.$on('disableWorkspace1', function () {
+      // console.log('disableWorkspace1')
+      vm.$children[0].$children[0].isActive = false
+    })
+  },
+  beforeUpdate: function () {
     if (this.isActive) {
+      // console.log('Workspace1 scroll enabled')
       // eslint-disable-next-line
       jquery('.scrollbar-workspace-1').scrollbar()
     } else {
+      // console.log('Workspace1 scroll destroy')
       // eslint-disable-next-line
       jquery('.scrollbar-workspace-1').scrollbar('destroy')
     }
@@ -44,7 +59,7 @@ export default {
   display: flex;
   width: inherit;
   height: inherit;
-  margin-left: 100vw;
+  margin-left: -94vw;
   background: red;
   overflow-x: hidden;
   overflow-y: auto;
