@@ -3,6 +3,17 @@
     <a v-on:click.prevent="changePath('/')">Home</a>
     <a v-on:click.prevent="changePath('/about')">About</a>
     <p>Happy Dhwani!</p>
+    <p>Happy Dhwani!</p>
+    <p>Happy Dhwani!</p>
+    <p>Happy Dhwani!</p>
+    <p>Happy Dhwani!</p>
+    <p>Happy Dhwani!</p>
+    <p>Happy Dhwani!</p>
+    <p>Happy Dhwani!</p>
+    <p>Happy Dhwani!</p>
+    <p>Happy Dhwani!</p>
+    <p>Happy Dhwani!</p>
+    <p>Happy Dhwani!</p>
   </div>
 </template>
 

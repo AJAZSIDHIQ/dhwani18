@@ -42,7 +42,6 @@ const vm = new Vue({
       if (this._currentComponent == null || this._currentComponent === ElementComponent) {
         this._currentComponent = ElementComponent
         this._currentWorkspace = 1
-        console.log('gets here')
         return createElement('div', {}, [createElement(DhwaniViewPort, {}, [createElement(Workspace1, {}, [this.$slots.default, createElement(ElementComponent, {}, [this.$slots.default]), createElement(Workspace1Menu, {}, [this.$slots.Workspace1Menu])]), createElement(Workspace2, {}, [this.$slots.Workspace2])])])
       } else {
         var returnCreateElement = null

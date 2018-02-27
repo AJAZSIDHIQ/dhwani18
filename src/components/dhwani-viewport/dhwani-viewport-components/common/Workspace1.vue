@@ -27,6 +27,8 @@ export default {
       // eslint-disable-next-line
       jquery('.scrollbar-workspace-1').scrollbar('destroy')
     }
+    // eslint-disable-next-line
+      // jquery('.scrollbar-workspace-1').scrollbar()
   },
   created: function () {
     // changePath event handler
@@ -41,11 +43,11 @@ export default {
   },
   beforeUpdate: function () {
     if (this.isActive) {
-      // console.log('Workspace1 scroll enabled')
+      console.log('Workspace1 scroll enabled')
       // eslint-disable-next-line
       jquery('.scrollbar-workspace-1').scrollbar()
     } else {
-      // console.log('Workspace1 scroll destroy')
+      console.log('Workspace1 scroll destroy')
       // eslint-disable-next-line
       jquery('.scrollbar-workspace-1').scrollbar('destroy')
     }
@@ -57,14 +59,18 @@ export default {
 #Workspace1 {
   position: relative;
   display: flex;
-  width: inherit;
+  width: 94vw !important;
   height: inherit;
+  margin-bottom: 0px !important;
   margin-left: -94vw;
+  margin-right: 0px !important;
   background: red;
   overflow-x: hidden;
   overflow-y: auto;
+  transition: margin 1s ease-in-out;
 }
 #Workspace1.active {
   margin-left: 0px;
+  transition: margin 1s ease-in-out;
 }
 </style>
